@@ -66,10 +66,12 @@ public class PostServiceImpl implements PostService {
 	@Override
 	@Transactional
 
-	public Post updatePost(Post post) throws Exception {
+	public Post updatePost(Long id,Post post) throws Exception {
 		try {
+       Optional<Post> post_update = repository.findById(id);
+       Post post_actual = post_update.get();
+       return repository.save(post_actual);
        
-        return repository.save(post);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
@@ -84,8 +86,11 @@ public class PostServiceImpl implements PostService {
 	public boolean deletePost(Long id) throws Exception {
 		try {	
 			if(repository.existsById(id)) {
-				repository.deleteById(id);;
+				
+				Post post = getById(id);
+				repository.delete(post);
 				return true;
+				
 			}
 			
 			else {

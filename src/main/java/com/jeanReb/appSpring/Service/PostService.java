@@ -16,7 +16,7 @@ public interface PostService {
 	
 	   public Post getById(Long id) throws Exception ;
 	   
-	   public Post updatePost(Post post) throws Exception;
+	   public Post updatePost(Long id,Post post) throws Exception;
 	     
 	   public boolean deletePost(Long id) throws Exception;
 	   
