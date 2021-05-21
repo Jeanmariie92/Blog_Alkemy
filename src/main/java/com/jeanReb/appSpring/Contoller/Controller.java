@@ -109,6 +109,18 @@ public class Controller {
 	  body("{\"error\":\"Error por favor intente mas tarde.\"}"); }
 	  
 	  }
+	  
+
+	  @PostMapping("blog/posts/new") public ResponseEntity<?>
+	  updatePost(@RequestBody Post post){
+	  
+	  try { 
+		  return
+	  ResponseEntity.status(HttpStatus.OK).body(postService.save(post));
+	  } catch (Exception e) { return ResponseEntity.status(HttpStatus.NOT_FOUND).
+	  body("{\"error\":\"Error por favor intente mas tarde.\"}"); }
+	  
+	  }
 	 
 	@DeleteMapping("blog/posts/delete/{id}")
 	public ResponseEntity<?> deletePost(@PathVariable Long id){

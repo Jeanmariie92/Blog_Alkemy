@@ -128,8 +128,9 @@ public class PostServiceImpl implements PostService {
 	@Transactional
 
 	public Post save(Post post) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Post post_new =repository.save(post);
+		return post_new;
 	}
 
 	
