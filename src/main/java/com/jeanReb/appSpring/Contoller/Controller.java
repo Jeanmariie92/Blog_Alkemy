@@ -43,6 +43,16 @@ public class Controller {
 		
 	}
 
+	@GetMapping("blog/posts/all")
+	public ResponseEntity<?> getAll(){
+		
+		try {
+			return ResponseEntity.status(HttpStatus.OK).body(postService.getAll());
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error por favor intente mas tarde.\"}");
+		}
+		
+	}
 	
 	@GetMapping("blog/posts")
 	public ResponseEntity<?> getAllPosts(){
@@ -88,17 +98,18 @@ public class Controller {
 		
 	}
 	
-	/*
-	 * @PutMapping("blog/posts/update/{id}") public ResponseEntity<?>
-	 * updatePost(@PathVariable Long id,@RequestBody Post post){
-	 * 
-	 * try { return
-	 * ResponseEntity.status(HttpStatus.OK).body(postService.updatePost(id, post));
-	 * } catch (Exception e) { return ResponseEntity.status(HttpStatus.NOT_FOUND).
-	 * body("{\"error\":\"Error por favor intente mas tarde.\"}"); }
-	 * 
-	 * }
-	 */
+	
+	  @PutMapping("blog/posts/update") public ResponseEntity<?>
+	  updatePost(@RequestParam Long id,@RequestBody Post post){
+	  
+	  try { 
+		  return
+	  ResponseEntity.status(HttpStatus.OK).body(postService.updatePost(id, post));
+	  } catch (Exception e) { return ResponseEntity.status(HttpStatus.NOT_FOUND).
+	  body("{\"error\":\"Error por favor intente mas tarde.\"}"); }
+	  
+	  }
+	 
 	@DeleteMapping("blog/posts/delete/{id}")
 	public ResponseEntity<?> deletePost(@PathVariable Long id){
 		

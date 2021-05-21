@@ -39,6 +39,11 @@ public class Post {
 	public Post() {
 		
 	}
+	
+public Post(String title, String image) {
+		this.title = title;
+		this.image = image;
+	}
 
 	public Long getId_post() {
 		return id_post;
@@ -47,17 +52,25 @@ public class Post {
 	public void setId_post(Long id_post) {
 		this.id_post = id_post;
 	}
+	
+	
 
-	public String getCategory() {
-		return category.getName() ;
-	}
-
-
-	public String getUser() {
-		return user.getEmail() ;
-	}
+	/*
+	 * public String getCategory() { return category.getName() ; }
+	 * 
+	 * 
+	 * public String getUser() { return user.getEmail() ; }
+	 */
 
 	
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public User getUser() {
+		return user;
+	}
 
 	public String getTitle() {
 		return title;
@@ -89,6 +102,14 @@ public class Post {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	

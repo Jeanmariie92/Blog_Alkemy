@@ -13,7 +13,9 @@ public interface PostService {
 	  public Iterable<?> getAllPostByTitle(String title) throws Exception;
 	  
 	  public Iterable<?> getAllPostByCategory(String category) throws Exception;
-	
+
+	  public Iterable<?> getAll() throws Exception;
+	  
 	   public Post getById(Long id) throws Exception ;
 	   
 	   public Post updatePost(Long id,Post post) throws Exception;

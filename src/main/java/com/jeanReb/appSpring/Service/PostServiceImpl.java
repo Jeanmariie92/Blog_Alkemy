@@ -7,7 +7,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jeanReb.appSpring.DTO.postDTO;
+import com.jeanReb.appSpring.Entity.Category;
 import com.jeanReb.appSpring.Entity.Post;
+import com.jeanReb.appSpring.Entity.User;
 import com.jeanReb.appSpring.Repository.PostRepository;
 
 @Service
@@ -16,6 +19,22 @@ public class PostServiceImpl implements PostService {
 	
 	@Autowired
 	private PostRepository repository;
+	
+	
+	@Override
+	@Transactional
+	public Iterable<?> getAll() throws Exception{
+		try {
+			Iterable<?> posts = repository.findAll();
+			return posts;
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+		}
+	
+	
+	
+	
 	
 	@Override
 	@Transactional
@@ -68,9 +87,10 @@ public class PostServiceImpl implements PostService {
 
 	public Post updatePost(Long id,Post post) throws Exception {
 		try {
-       Optional<Post> post_update = repository.findById(id);
-       Post post_actual = post_update.get();
-       return repository.save(post_actual);
+       
+	 
+		
+       return repository.save(post);
        
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
